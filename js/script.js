@@ -109,14 +109,15 @@ $(function() {
             var viewBox = strSvg.match(/viewBox="([\d\s\.-]+)" /)[1];
 
             var fromdisplay = function() {
-              var svg = $("svg");
+              var elems = $("svg").parent().clone();
+              var svg = elems.find("svg");
               svg.removeAttr("viewBox");
               svg.attr({
                   "xmlns" : "http://www.w3.org/2000/svg",
                   "viewBox" : viewBox
               });
               return 'data:image/svg+xml;base64,'  +
-                  btoa(svg.parent().html().replace(/[^\x00-\x7f]/g, function(x){
+                  btoa(elems.html().replace(/[^\x00-\x7f]/g, function(x){
                           return "&#" + x.charCodeAt(0) + ";"
                   }), true);
             }
