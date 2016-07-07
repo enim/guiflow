@@ -101,13 +101,29 @@ $(function() {
             return uiflow.update("<anon>", code, "svg");
         }).and(function(svg) {
 
-            var image = new Image;
             var strSvg = String(svg);
             var match = strSvg.match(/svg width="(\d+)pt" height="(\d+)pt"/);
             var width = match[1];
             var height = match[2];
 
-            image.src = "data:image/svg+xml," + encodeURIComponent(svg);
+            var viewBox = strSvg.match(/viewBox="([\d\s\.-]+)" /)[1];
+
+            var fromdisplay = function() {
+              var svg = $("svg");
+              svg.removeAttr("viewBox");
+              svg.attr({
+                  "xmlns" : "http://www.w3.org/2000/svg",
+                  "viewBox" : viewBox
+              });
+              return 'data:image/svg+xml;base64,'  +
+                  btoa(svg.parent().html().replace(/[^\x00-\x7f]/g, function(x){
+                          return "&#" + x.charCodeAt(0) + ";"
+                  }), true);
+            }
+
+            var image = new Image;
+            //image.src = "data:image/svg+xml," + encodeURIComponent(svg);
+            image.src = fromdisplay();
             var cElement = document.createElement("canvas");
             cElement.width = width * 2;
             cElement.height = height * 2;

@@ -86,7 +86,7 @@ var refresh = function(data) {
         }
     });
     svg.find("g.node").on("mouseout", function(e) {
-        $(this).find("polygon").attr("stroke", "black");
+        $(this).find("polygon").attr("stroke", "none");
         $(this).find("polygon").attr("stroke-width", "1");
         $(this).find("ellipse").attr("stroke", "black");
         $(this).find("ellipse").attr("stroke-width", "1");
