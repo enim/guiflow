@@ -1,7 +1,7 @@
 
 https://github.com/hirokidaichi/guiflow
 の
-![befor](wiki/images/befor.png)
+![befor](https://github.com/enim/guiflow/wiki/images/befor.png)
 が
-![after](wiki/images/after.png)
+![after](https://github.com/enim/guiflow/wiki/images/after.png)
 こうなる
