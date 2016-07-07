@@ -1,4 +1,4 @@
-var $ = require("./jquery-2.1.4.min");
+var $ = require("./jquery-2.1.4.min.js");
 var EventEmitter = require("events");
 var sprintf = require("sprintf");
 var emitter = new EventEmitter();
@@ -61,7 +61,13 @@ var refresh = function(data) {
     var initialViewBox;
     var onDrag = false;
 
-    svg.find("g.node polygon").attr("fill", "white");
+    svg.find("g.node text").attr('font-family', 'メイリオ');
+    svg.find("g.node polygon").attr("fill", "white").attr('stroke', 'none');
+    svg.find('g.node').each(function(i,e) {
+      $(e).find("text:first").attr('text-decoration', 'underline').attr('font-weight', 'bold');
+      $(e).find("polyline:first").attr('stroke', 'none');
+      $(e).find("polyline:gt(1)").attr('stroke', 'black').attr('stroke-dasharray', '8 8');
+    });
     svg.find("g.node ellipse").attr("fill", "white");
     svg.find("g.node").on("mouseover", function(e) {
         $(this).find("polygon").attr("stroke", "green");

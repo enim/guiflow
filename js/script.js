@@ -27,10 +27,10 @@ var ipcRenderer = require("electron").ipcRenderer;
 var remote = require("remote");
 var fs = require("fs");
 var flumine = require("flumine");
-var $ = require(resolvePath("./js/jquery-2.1.4.min"));
+var $ = require("./js/jquery-2.1.4.min.js");
 var uiflow = remote.require("./app/uiflow");
-var editor = require(resolvePath("./js/editor"));
-var diagram = require(resolvePath("./js/diagram"));
+var editor = require("./js/editor");
+var diagram = require("./js/diagram");
 
 [
     "open",
